@@ -2,4 +2,4 @@ Angular realtime change
 ===========
 Development application for a Bower componenet
 
-A module angular for realtime communication with socket.io server and rails.
+A module angular for realtime communication using socket.io server and rails.
