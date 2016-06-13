@@ -3,9 +3,13 @@
  */
 angular.module("angular-realtime-change", [])
 
-.run(['$realtime', function ($realtime) {
-  console.log("$realtime", $realtime);
-}])
+// .run(['$realtime', function ($realtime) {
+//   console.log("$realtime", $realtime);
+// }])
+
+// .config(['$realtimeProvider', function ($realtimeProvider) {
+//   console.log("$realtimeProvider", $realtimeProvider);
+// }])
 
 .provider("$realtime", [function () {
 
