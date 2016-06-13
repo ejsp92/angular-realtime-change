@@ -1,0 +1,44 @@
+{
+  "name": "angular-realtime-change",
+  "version": "0.0.1",
+  "title": "Angular realtime change",
+  "appPath": "app",
+  "description": "A module angular for realtime communication with socket.io server and rails.",
+  "keywords": [
+    "image",
+    "video",
+    "gallery"
+  ],
+  "homepage": "https://github.com/emesonsantana/angular-realtime-change",
+  "author": {
+    "name": "Emeson Santana"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/emesonsantana/angular-realtime-change.git"
+  },
+  "bugs": "https://github.com/emesonsantana/angular-realtime-change/issues",
+  "dependencies": {
+    "jquery": ">=2.1.1",
+    "angular": "^1.5.6",
+    "socket.io-client": "^1.4.6"
+  },
+  "main": [
+    "app/css/angular-realtime-change",
+    "app/img/sprites.gif",
+    "app/js/angular-realtime-change"
+  ],
+  "ignore": [
+    "/*.*",
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/bower_components",
+    "test",
+    "tests"
+  ],
+  "authors": [
+    "Emeson Santana <emesonsantana@gmail.com>"
+  ],
+  "license": "MIT"
+}
