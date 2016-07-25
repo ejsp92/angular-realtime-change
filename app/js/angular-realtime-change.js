@@ -39,7 +39,7 @@ angular.module("angular-realtime-change", [])
       var _connect = function(authorizationParams){
         if(_socket) _disconnect();
 
-        _config.socket.options.query = 'authorization=' + JSON.stringify(authorizationParams);
+        if(authorizationParams) _config.socket.options.query = 'authorization=' + JSON.stringify(authorizationParams);
         _socket = io(_config.socket.server, _config.socket.options);
         _defineListeners();
       };

@@ -1,5 +1,5 @@
 <!doctype html>
-<html ng-app="angular-realtime-change">
+<html ng-app="demo">
 
 <head>
     <title>Demo</title>
@@ -13,16 +13,58 @@
     <link rel="stylesheet" href="css/angular-realtime-change.css" />
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
-    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/socket.io-client/socket.io.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
     <script type="text/javascript" src="js/angular-realtime-change.js"></script>
+    <script type="text/javascript">
+        angular.module('demo', ['angular-realtime-change'])
+            .run([function () {
+                // body...
+            }])
+            .controller('MessageController', ['$scope', '$realtime', function ($scope, $realtime) {
+                
+                $scope.messages = [];
+                $scope.body = '';
+
+                $scope.init = function () {
+                    $realtime.connect();
+                };
+
+                $scope.send = function (form) {
+                    if(form.$invalid) return;
+
+                    $realtime.request({
+                        Message: {
+                            action: 'create',
+                            params: {
+                                body: $scope.body
+                            }
+                        }
+                    });
+                    $scope.body = '';
+                };
+
+                $scope.$on('change:message:create', function ($event, message) {
+                    $scope.messages.push(message.resource_content);
+                    $scope.$apply();
+                });
+
+            }]);
+    </script>
 </head>
 
-<body>
-    <div>
+<body ng-controller="MessageController">
+    <div ng-init="init()">
         Demo application for new bower component!
+        <form name="form" ng-submit="send(form)" novalidate>
+            <ul>
+                <li ng-repeat="message in messages">{{ message.body }}</li>
+            </ul>
+            <input type="text" name="message" ng-model="body" required>
+            <button type="submit">Send</button>
+        </form>
     </div>
 </body>
 
